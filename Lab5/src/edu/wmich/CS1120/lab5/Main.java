@@ -13,6 +13,7 @@ public class Main {
 		ContactInformationFormatter formatter = new ContactInformationFormatter();
 		formatter.readContactInformation(filePaths);
 		System.out.println("hi jacob");
+		
+		System.out.println("adfsasdfs");
 	}
-
 }
