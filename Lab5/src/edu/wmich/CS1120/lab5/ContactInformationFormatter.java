@@ -26,4 +26,10 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 		
 	}
 
+	@Override
+	public void formatName(String name) throws NameFormatException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
