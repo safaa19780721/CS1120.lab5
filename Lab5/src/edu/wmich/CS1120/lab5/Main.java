@@ -12,7 +12,6 @@ public class Main {
 				"testcase10.txt"};
 		ContactInformationFormatter formatter = new ContactInformationFormatter();
 		formatter.readContactInformation(filePaths);
-		System.out.println("Hello!");
 	}
 
 }
