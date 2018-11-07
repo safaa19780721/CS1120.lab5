@@ -15,12 +15,11 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 			formatContactInformation(filePaths[i]);
 		}
 	}
+	FormatExceptionHandler Err = new FormatExceptionHandler();
 
 	@Override
 	public void formatContactInformation(String fileName) {
-		
-		FormatExceptionHandler Err = new FormatExceptionHandler();
-		
+				
 		//Instantiate scanner for file, and handle error if no file is found
 		try {
 			
@@ -74,6 +73,21 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 	public void formatEmail(String email) throws EmailAddressFormatException {
 		// TODO create a loop to look for the @ symbol in the given email address. if one is not found it will 
 		//throw an error
+		boolean correct = false;
+		for (int r = 0; r < email.length();r++) {
+			if (email.charAt(r) == '@') {
+				correct = true;
+			}
+			else {}
+		}
+		if (correct == true) {
+			System.out.println(email.toLowerCase());
+		}
+		else {
+			
+			EmailAddressFormatException e = null;
+			Err.handleEmailFormatException(e);
+		}
 	}
 
 	@Override
@@ -96,7 +110,8 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 			}
 		}
 		if(i != 10) { //a statement that will throw an error if the phone number is not 10 digits long
-			throw PhoneNumberFormatException;
+			PhoneNumberFormatException e = null;
+			Err.handlePhoneNumberFormatException(e);
 		}
 		String phoneNum = "(";
 		for(int k = 0; k<3;k++) {
@@ -116,15 +131,34 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 	@Override
 	public void formatName(String name) throws NameFormatException {
 		// TODO Auto-generated method stub
-		String nameArr[] = name.split(name, ' ');
-		int fAndL = nameArr.length;
-		while (fAndL != 0) {
-			for (int g = 0; g < nameArr[fAndL].length(); g++) {
-				if (g == 0) {
-					
+		String nameArr[] = new String [2];
+		String nameStr ="";
+		char nameChar;
+		nameArr = name.split(name, ' ');
+		for (int a = 0; a < 2; a++) {
+			for (int b = 0; b < nameArr[a].length(); b++) {
+				String h = null;
+				if (b == 0) {
+					nameChar = nameArr[a].charAt(b);
+					h = h + nameChar;
+					h.toUpperCase();
+					nameStr = nameStr + h;
+				}
+				else if (b == nameArr[a].length()-1) {
+					nameChar = nameArr[a].charAt(b);
+					h = h + nameChar;
+					h.toLowerCase();
+					nameStr = nameStr + h + " ";
+				}
+				else {
+					nameChar = nameArr[a].charAt(b);
+					h = h + nameChar;
+					h.toLowerCase();
+					nameStr = nameStr + h;
 				}
 			}
 		}
+		System.out.println(nameStr);
 	}
 
 }
